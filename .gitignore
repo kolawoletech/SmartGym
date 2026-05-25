@@ -1,0 +1,54 @@
+# ---- Visual Studio ----
+.vs/
+*.vsidx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# ---- Build outputs ----
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+bld/
+
+# ---- ReSharper / Rider ----
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+.idea/
+
+# ---- ASP.NET ----
+PublishProfiles/
+*.publishproj
+*.pubxml
+*.pubxml.user
+*.publishsettings
+App_Data/Logs/*.txt
+App_Data/Reports/*.xml
+!App_Data/Logs/.gitkeep
+!App_Data/Reports/.gitkeep
+
+# ---- NuGet ----
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+
+# ---- VS Code ----
+.vscode/
+
+# ---- Misc ----
+Thumbs.db
+.DS_Store
+*.log
+*.tmp
+
+# ---- Backup folder (created automatically by VS web project upgrades) ----
+Backup/
