@@ -186,6 +186,9 @@ the `ASP.NET_SessionId` cookie.
 | Login always fails for seeded users      | Use `Register.aspx` to create new accounts             |
 | Web service page is blank                | Right-click `SmartGymService.asmx` -> View in Browser  |
 | File log not appearing                   | Make sure `App_Data/Logs` exists (Global.asax creates it) |
+| "Microsoft.WebApplication.targets was not found" | Install the **ASP.NET and web development** workload from the Visual Studio Installer. The patched `SmartGym.csproj` also searches VS 2019/2022/2026 install paths automatically. |
+| Git tries to commit `.vs/FileContentIndex/*.vsidx` | Project-level `.gitignore` excludes `.vs/`. If files were already tracked, run: `git rm -r --cached .vs` then re-commit. |
+| VS 2026 wants you to upgrade to `.slnx`  | Optional. The classic `.sln` still works. Convert via **File -> Save As -> Solution File (.slnx)** if desired. |
 
 ---
 
