@@ -122,5 +122,28 @@
     <Folder Include="App_Data\Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+
+  <!-- Resolve VSToolsPath robustly across VS 2019 / 2022 / 2026.
+       Falls back to the common install paths when $(VSToolsPath) is not set. -->
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <!-- Default VSToolsPath -->
+    <WebTargetsCandidate1>$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate1>
+    <!-- VS 2026 (v18.0) Community -->
+    <WebTargetsCandidate2>C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\v18.0\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate2>
+    <!-- VS 2022 (v17.0) Community -->
+    <WebTargetsCandidate3>C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\v17.0\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate3>
+    <!-- VS 2022 Professional / Enterprise -->
+    <WebTargetsCandidate4>C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Microsoft\VisualStudio\v17.0\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate4>
+    <WebTargetsCandidate5>C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VisualStudio\v17.0\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate5>
+    <!-- VS 2019 (legacy x86 path) -->
+    <WebTargetsCandidate6>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v16.0\WebApplications\Microsoft.WebApplication.targets</WebTargetsCandidate6>
+  </PropertyGroup>
+
+  <Import Project="$(WebTargetsCandidate1)" Condition="Exists('$(WebTargetsCandidate1)')" />
+  <Import Project="$(WebTargetsCandidate2)" Condition="!Exists('$(WebTargetsCandidate1)') And Exists('$(WebTargetsCandidate2)')" />
+  <Import Project="$(WebTargetsCandidate3)" Condition="!Exists('$(WebTargetsCandidate1)') And !Exists('$(WebTargetsCandidate2)') And Exists('$(WebTargetsCandidate3)')" />
+  <Import Project="$(WebTargetsCandidate4)" Condition="!Exists('$(WebTargetsCandidate1)') And !Exists('$(WebTargetsCandidate2)') And !Exists('$(WebTargetsCandidate3)') And Exists('$(WebTargetsCandidate4)')" />
+  <Import Project="$(WebTargetsCandidate5)" Condition="!Exists('$(WebTargetsCandidate1)') And !Exists('$(WebTargetsCandidate2)') And !Exists('$(WebTargetsCandidate3)') And !Exists('$(WebTargetsCandidate4)') And Exists('$(WebTargetsCandidate5)')" />
+  <Import Project="$(WebTargetsCandidate6)" Condition="!Exists('$(WebTargetsCandidate1)') And !Exists('$(WebTargetsCandidate2)') And !Exists('$(WebTargetsCandidate3)') And !Exists('$(WebTargetsCandidate4)') And !Exists('$(WebTargetsCandidate5)') And Exists('$(WebTargetsCandidate6)')" />
 </Project>
