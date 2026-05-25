@@ -1,0 +1,36 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="SmartGym.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartGym - <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server" /></title>
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
+</head>
+<body>
+    <form id="mainForm" runat="server">
+        <header class="header">
+            <div class="brand">SmartGym</div>
+            <nav class="nav" runat="server" id="navMenu">
+                <asp:HyperLink ID="lnkDashboard"    NavigateUrl="~/Dashboard.aspx"    runat="server">Dashboard</asp:HyperLink>
+                <asp:HyperLink ID="lnkBookClass"    NavigateUrl="~/BookClass.aspx"    runat="server">Book Class</asp:HyperLink>
+                <asp:HyperLink ID="lnkTopUp"        NavigateUrl="~/TopUp.aspx"        runat="server">Top Up</asp:HyperLink>
+                <asp:HyperLink ID="lnkTransactions" NavigateUrl="~/Transactions.aspx" runat="server">Transactions</asp:HyperLink>
+                <asp:HyperLink ID="lnkAdmin"        NavigateUrl="~/AdminClasses.aspx" runat="server" Visible="false">Admin</asp:HyperLink>
+                <asp:HyperLink ID="lnkLogout"       NavigateUrl="~/Logout.aspx"       runat="server">Logout</asp:HyperLink>
+                <asp:HyperLink ID="lnkLogin"        NavigateUrl="~/Login.aspx"        runat="server" Visible="false">Login</asp:HyperLink>
+                <asp:HyperLink ID="lnkRegister"     NavigateUrl="~/Register.aspx"     runat="server" Visible="false">Register</asp:HyperLink>
+            </nav>
+        </header>
+
+        <main class="container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </main>
+
+        <footer class="footer">
+            &copy; <%: DateTime.Now.Year %> SmartGym Fitness - Membership Management System
+        </footer>
+    </form>
+</body>
+</html>

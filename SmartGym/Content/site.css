@@ -1,0 +1,136 @@
+/* SmartGym - global stylesheet
+   Color palette:
+   --primary:   #1e88e5 (blue)
+   --accent:    #43a047 (green)
+   --dark:      #1f2937
+   --light:     #f5f7fa
+*/
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+    line-height: 1.5;
+}
+
+/* ---------- Header / Nav ---------- */
+.header {
+    background: linear-gradient(90deg, #1e88e5 0%, #43a047 100%);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.header .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.25rem;
+    font-weight: 500;
+    transition: opacity .2s;
+}
+.nav a:hover { opacity: .8; }
+
+/* ---------- Layout ---------- */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    margin-bottom: 1.5rem;
+}
+h1, h2, h3 { color: #1f2937; margin-top: 0; }
+h1 { border-bottom: 3px solid #1e88e5; padding-bottom: .5rem; }
+
+/* ---------- Forms ---------- */
+.form-row { margin-bottom: 1rem; display: flex; flex-direction: column; }
+.form-row label { font-weight: 600; margin-bottom: .35rem; }
+.form-row input[type=text],
+.form-row input[type=email],
+.form-row input[type=password],
+.form-row input[type=number],
+.form-row select,
+.form-row textarea {
+    padding: .65rem .8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+.form-row input:focus, .form-row select:focus {
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 3px rgba(30,136,229,.15);
+    outline: none;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    background: #1e88e5;
+    color: #fff;
+    border: 0;
+    padding: .7rem 1.4rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+.btn:hover  { background: #1565c0; }
+.btn.accent { background: #43a047; }
+.btn.accent:hover { background: #2e7d32; }
+.btn.danger { background: #e53935; }
+.btn.danger:hover { background: #b71c1c; }
+
+/* ---------- Tables / Grids ---------- */
+table, .grid {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 1rem;
+}
+table th, table td, .grid th, .grid td {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+table th, .grid th { background: #1e88e5; color: #fff; }
+table tr:nth-child(even) td { background: #f8fafc; }
+
+/* ---------- Validation / Alerts ---------- */
+.error, .field-validation-error {
+    color: #c62828;
+    font-size: .9rem;
+}
+.alert-success { background: #e8f5e9; color: #2e7d32; padding: .85rem 1rem; border-radius: 6px; margin: 1rem 0; }
+.alert-error   { background: #ffebee; color: #c62828; padding: .85rem 1rem; border-radius: 6px; margin: 1rem 0; }
+.alert-info    { background: #e3f2fd; color: #1565c0; padding: .85rem 1rem; border-radius: 6px; margin: 1rem 0; }
+
+/* ---------- Stat / dashboard tiles ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.tile { background: #fff; padding: 1.25rem; border-left: 5px solid #1e88e5; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+.tile h3 { margin: 0; color: #6b7280; font-size: .9rem; text-transform: uppercase; }
+.tile .value { font-size: 1.75rem; font-weight: 700; color: #1f2937; margin-top: .3rem; }
+
+/* ---------- Footer ---------- */
+.footer { text-align: center; padding: 2rem 1rem; color: #6b7280; font-size: .85rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+    .header { flex-direction: column; gap: .75rem; padding: 1rem; }
+    .nav a  { margin: 0 .5rem; }
+    .container { padding: 0 1rem; }
+}
